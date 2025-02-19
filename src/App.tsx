@@ -1,4 +1,5 @@
 import { Badge } from '@/components/ui/badge';
+import portfolioImage from './assets/Isaac Tiew Xun Yong Profile Photo.jpg'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Github, Linkedin, Mail } from 'lucide-react';
@@ -88,7 +89,7 @@ const Portfolio = () => {
         <div className="flex flex-col lg:flex-row items-center justify-around drop-shadow-lg max-w-full h-50 px-2 py-8">
           {/* Left section: Profile */}
           <div className="flex-1 flex justify-center border-r lg:mr-8 mb-8 lg:mb">
-            <img src="../public/Isaac Tiew Xun Yong Profile Photo.jpg" className="w-30 h-30 object-cover rounded-2xl drop-shadow-lg"></img>
+            <img src= {portfolioImage} className="w-30 h-30 object-cover rounded-2xl drop-shadow-lg"></img>
           </div>
           {/* Right Section: About Me */}
 
