@@ -6,6 +6,13 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { Github, Linkedin, Mail } from 'lucide-react';
 import Autoplay from 'embla-carousel-autoplay';
 import AutoScroll from 'embla-carousel-auto-scroll';
+import resume from './assets/IsaacTiewXunYong_Resume.pdf';
+import { Viewer, Worker } from '@react-pdf-viewer/core';
+import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
+
+import '@react-pdf-viewer/core/lib/styles/index.css';
+import '@react-pdf-viewer/default-layout/lib/styles/index.css';
+
 interface projPhotos{
   title: string,
   description: string,
@@ -14,6 +21,7 @@ interface projPhotos{
   gitHubUrl: string,
   isMulti: boolean,
 }
+
 
 const Portfolio = () => {
   const technologiesKnown = [
@@ -269,6 +277,19 @@ const Portfolio = () => {
             </Card>
           ))}
         </div>
+      </section>
+
+      {/* Resume section */}
+      <section className="mb-12">
+        <div className= "flex flex-row justify-center items-center">
+          <h2 className="text-2xl font-bold mb-6" style={{ color: 'hsl(var(--primary))' }}>My Resume</h2>
+        </div>
+        <Worker workerUrl='/worker.js'>
+          <div className="mx-auto w-full lg:w-[900px] lg:h-[750px] md:w-[80%] md:h-[600px] sm:w-[90%] sm:h-[400px]">
+              <Viewer fileUrl={resume} />
+          </div>
+        </Worker>
+
       </section>
   
       {/* Contact Section */}
