@@ -12,7 +12,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 
 export default function MyPdf({fileUrl} : {fileUrl:string}){
     const [numPages, setNumPages] = useState<number>(); // set total number of pages on the pdf
-    const [pageNumber, setPageNumber] = useState<number>(); // set the current page number used to passs it in
+    // const [pageNumber, setPageNumber] = useState<number>(); // set the current page number used to passs it in
     
     function onDocumentLoadSuccess({ numPages: nextNumPages }: PDFDocumentProxy): void {
         setNumPages(nextNumPages);
@@ -21,18 +21,13 @@ export default function MyPdf({fileUrl} : {fileUrl:string}){
     
     return (
         <div className = "flex flex-row px-5 justify-center">
-             <Document className= "items-center" file={fileUrl} onLoadSuccess={onDocumentLoadSuccess}>
-                {Array.apply(null, Array(numPages))
-                .map((x, i) => i + 1)
-                .map((page) => {
-                    return (
-                    <Page className={"mb-10"}
-                        pageNumber={page}
-                        renderTextLayer={false}
-                        renderAnnotationLayer={false}
-                    />
-                    );
-                })}
+            <Document className= "items-center" file={fileUrl} onLoadSuccess={onDocumentLoadSuccess}>
+                {Array.from(new Array(numPages), (_el, index) => (
+                <Page className={"mb-10"}
+                    key={`page_${index + 1}`}
+                    pageNumber={index + 1}
+                />
+                ))}
             </Document>
         </div>
     )
