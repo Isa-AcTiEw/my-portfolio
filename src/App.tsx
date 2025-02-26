@@ -7,11 +7,16 @@ import { Github, Linkedin, Mail } from 'lucide-react';
 import Autoplay from 'embla-carousel-autoplay';
 import AutoScroll from 'embla-carousel-auto-scroll';
 import resume from './assets/IsaacTiewXunYong_Resume.pdf';
-import { Viewer, Worker } from '@react-pdf-viewer/core';
-import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
+import MyPdf from './components/ui/pdf';
+import BEDpic1 from './assets/BED/BED_Website_Home.png';
+import BEDpic2 from './assets/BED/BED_Website_Login.png';
+import BEDpic3 from './assets/BED/BED_Website_UserEvents.png'
+import BEDpic4 from './assets/BED/BED_Website_EventManagementAdmin.png'
 
-import '@react-pdf-viewer/core/lib/styles/index.css';
-import '@react-pdf-viewer/default-layout/lib/styles/index.css';
+import FSDPpic1 from './assets/FSDP/homepage.png';
+import FSDPpic2 from './assets/FSDP/management.png';
+import FSDPpic3 from './assets/FSDP/template.png'
+
 
 interface projPhotos{
   title: string,
@@ -80,7 +85,7 @@ const Portfolio = () => {
     {
       title: 'Backend Community Club Website',
       description: 'A community club website that allow adminstrators divided into roles such as event manage, admin and facilities manager. To organise events and provide frequent updates on current facilities status. Allowing for seameless engagement with residents by allowing the sign up for events ',
-      image: ['src/assets/BED/BED_Website_Home.png','src/assets/BED/BED_Website_Login.png','src/assets/BED/BED_Website_UserEvents.png','src/assets/BED/BED_Website_EventManagementAdmin.png'],
+      image: [BEDpic1,BEDpic2,BEDpic3,BEDpic4],
       tag: ['Express JS', 'Js', 'Node Js'],
       gitHubUrl:"https://github.com/Isa-AcTiEw/BED2024Apr_P03_T07",
       isMulti: true,
@@ -88,7 +93,7 @@ const Portfolio = () => {
     {
       title: 'Ad distribution system ',
       description: 'Developed a real-time ad distribution system that utilises a serverless architecture, to enable real-time ad distribution and updates. Responsible for development of Role based authentication system for managing access to functionalities and features within the app',
-      image: ['src/assets/FSDP/homepage.png','src/assets/FSDP/management.png','src/assets/FSDP/template.png'],
+      image: [FSDPpic1,FSDPpic2,FSDPpic3],
       tag: ['React', 'Javascript', 'Socket.io', 'DynamoDB'],
       gitHubUrl:"https://github.com/danielbakrr/fsdp",
       isMulti: true,
@@ -284,12 +289,7 @@ const Portfolio = () => {
         <div className= "flex flex-row justify-center items-center">
           <h2 className="text-2xl font-bold mb-6" style={{ color: 'hsl(var(--primary))' }}>My Resume</h2>
         </div>
-        <Worker workerUrl='/worker.js'>
-          <div className="mx-auto w-full lg:w-[900px] lg:h-[750px] md:w-[80%] md:h-[600px] sm:w-[90%] sm:h-[400px]">
-              <Viewer fileUrl={resume} />
-          </div>
-        </Worker>
-
+        <MyPdf fileUrl={resume}></MyPdf>
       </section>
   
       {/* Contact Section */}
