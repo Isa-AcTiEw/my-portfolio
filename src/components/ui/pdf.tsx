@@ -2,11 +2,10 @@ import { pdfjs, Document, Page } from 'react-pdf';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
 import type { PDFDocumentProxy } from 'pdfjs-dist';
-import { useState, useCallback, useRef,useEffect} from 'react';
+import { useState,useEffect} from 'react';
 import { Button } from "@/components/ui/button"
 import { ChevronLeft } from "lucide-react"
 import { ChevronRight } from "lucide-react"
-import { useResizeObserver } from '@wojtekmaj/react-hooks';
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
     'pdfjs-dist/build/pdf.worker.min.mjs',
     import.meta.url,
