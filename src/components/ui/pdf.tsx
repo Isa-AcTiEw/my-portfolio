@@ -61,8 +61,11 @@ export default function MyPdf({fileUrl} : {fileUrl:string}){
         else if (windowWidth >= 600){
             setPageWidth(500);
         }
-        else{
+        else if (windowWidth >= 430){
             setPageWidth(350);
+        }
+        else{
+            setPageWidth(250);
         }
       }, [windowWidth]);
 
@@ -76,15 +79,15 @@ export default function MyPdf({fileUrl} : {fileUrl:string}){
                 <Page pageIndex={pageNumber} renderTextLayer = {false} renderAnnotationLayer = {false}
                 width={pageWidth}></Page>
             </Document>
-             <div className = "flex flex-row px-5 justify-center rounded-sm relative">
+             <div className = "flex flex-row px-5 justify-center rounded-sm relative mx-auto">
                 <p>Page {pageNumber +1} of {numPages} </p>
-                <Button className = "absolute left-10" variant="outline" size="icon" onClick={onPrevClicked}>
+                <Button className = "absolute left-0" variant="outline" size="icon" onClick={onPrevClicked}>
                     <ChevronLeft />
                 </Button>
-                <Button className = "absolute right-10" variant="outline" size="icon" onClick={onNextClicked}>
+                <Button className = "absolute right-0" variant="outline" size="icon" onClick={onNextClicked}>
                     <ChevronRight/>
                 </Button>
-            </div>
+             </div>
         </div>
         
     )
