@@ -147,7 +147,7 @@ const Portfolio = () => {
             <CarouselContent className="-ml-1">
               {languagesKnown.map((lang,index)=> {
                 return(
-                  <CarouselItem key = {index} className = " w-full sm:basis-full lg:basis-2/4 md:basis-1/3">
+                  <CarouselItem key = {index} className = " w-full sm:w-200px h-200px lg:basis-2/4 md:basis-1/3">
                     <div className="p-1">
                       <Card>
                         <CardContent className="flex aspect-square items-center justify-center p-6">
@@ -183,7 +183,7 @@ const Portfolio = () => {
                 {technologiesKnown.map((tech,index) => (
                     <CarouselItem
                     key={index}
-                    className="flex flex-row lg:basis-1/2 md:basis-1/4 sm:basis-1/4 w-full h-fit pl-10"
+                    className="flex flex-row lg:basis-3/4 md:basis-2/4 sm:basis-1/5 w-full h-fit pl-10"
                   >
                     <Card
                       className="w-full md:w-[200px] sm:w-[200px] lg:h-[300px] md:h-[300px] sm:h-[300px]"

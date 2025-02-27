@@ -65,7 +65,7 @@ export default function MyPdf({fileUrl} : {fileUrl:string}){
             setPageWidth(350);
         }
         else{
-            setPageWidth(250);
+            setPageWidth(320);
         }
       }, [windowWidth]);
 
