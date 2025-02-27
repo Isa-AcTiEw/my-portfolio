@@ -59,10 +59,10 @@ export default function MyPdf({fileUrl} : {fileUrl:string}){
           setPageWidth(600); // Medium screens (md)
         }
         else if (windowWidth >= 600){
-            setPageWidth(300);
+            setPageWidth(500);
         }
         else{
-            setPageWidth(200);
+            setPageWidth(350);
         }
       }, [windowWidth]);
 
