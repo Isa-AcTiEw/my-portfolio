@@ -168,7 +168,7 @@ const Portfolio = () => {
         <div className= "flex flex-row justify-center items-center">
           <h1 className="text-3xl font-bold mb-4" style={{ color: 'hsl(var(--primary))' }}>Technologies Known</h1>
         </div>
-        <div className="flex flex-row justify-around overflow-hidden px-2 space-x-4 mt-20">
+        <div className="flex flex-row justify-around overflow-hidden mt-20">
           {/* Add your tech stack items here */}
           <div className="flex flex-wrap justify-center items-center">
             <Carousel 
@@ -183,7 +183,7 @@ const Portfolio = () => {
                 {technologiesKnown.map((tech,index) => (
                   <CarouselItem
                   key={index}
-                  className="flex flex-row h-[400px] w-[350px] sm:w-[20rem] md:w-[40rem] lg:w-[60rem]"
+                  className="flex flex-row justify-center -h-[400px] w-[350px] sm:w-[20rem] md:w-[40rem] lg:w-[60rem]"
                 >
                   <Card
                     className="items-center w-fit h-fit"
