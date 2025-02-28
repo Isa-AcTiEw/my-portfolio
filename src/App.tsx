@@ -271,12 +271,12 @@ const Portfolio = () => {
                     </Badge>
                   ))}
                 </div>
-                <div className = "flex flex-col justify-center rounded-sm bg-black mt-20 w-full">
-                <button 
-                    className="flex items-center justify-center gap-2 px-4 py-2 text-white rounded-lg" 
-                    onClick={() => window.open(project.gitHubUrl, '_blank')}>
-                    <Github className="h-6 w-6" /> {/* Icon */}
-                    <span>Github Repo</span> {/* Text */}
+                <div className = "flex flex-col justify-center rounded-sm bg-primary mt-20 w-full">
+                  <button 
+                      className="flex items-center justify-center gap-2 px-4 py-2 text-white" 
+                      onClick={() => window.open(project.gitHubUrl, '_blank')}>
+                      <Github className="h-6 w-6" /> {/* Icon */}
+                      <span>Github Repo</span> {/* Text */}
                   </button>
 
                 </div>
