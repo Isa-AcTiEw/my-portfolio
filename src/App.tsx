@@ -271,7 +271,7 @@ const Portfolio = () => {
                     </Badge>
                   ))}
                 </div>
-                <div className = "flex flex-col justify-center rounded-sm bg-primary mt-20 w-full">
+                <div className = "flex flex-col justify-center rounded-lg bg-primary mt-5 w-full">
                   <button 
                       className="flex items-center justify-center gap-2 px-4 py-2 text-white" 
                       onClick={() => window.open(project.gitHubUrl, '_blank')}>
