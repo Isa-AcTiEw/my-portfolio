@@ -69,6 +69,10 @@ const Portfolio = () => {
     {
       title: "Figma",
       image:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
+    },
+    {
+      title: "Express Js",
+      image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original-wordmark.svg"
     }
   ];
 
@@ -168,9 +172,8 @@ const Portfolio = () => {
         <div className= "flex flex-row justify-center items-center">
           <h1 className="text-3xl font-bold mb-4" style={{ color: 'hsl(var(--primary))' }}>Technologies Known</h1>
         </div>
-        <div className="flex flex-row justify-around overflow-hidden mt-20">
-          {/* Add your tech stack items here */}
-          <div className="flex flex-wrap justify-center items-center">
+         {/* Add your tech stack items here */}
+         <div className="flex flex-row justify-center mt-20 mx-auto">
             <Carousel 
               plugins = {[
                 AutoScroll({ playOnInit: true })
@@ -183,7 +186,7 @@ const Portfolio = () => {
                 {technologiesKnown.map((tech,index) => (
                   <CarouselItem
                   key={index}
-                  className="flex flex-row justify-center -h-[400px] w-[350px] sm:w-[20rem] md:w-[40rem] lg:w-[60rem]"
+                  className="flex flex-row justify-center h-[400px] w-[350px] sm:w-[20rem] md:w-[40rem] lg:w-[60rem]"
                 >
                   <Card
                     className="items-center w-fit h-fit"
@@ -205,9 +208,6 @@ const Portfolio = () => {
               </CarouselContent>
             </Carousel>
           </div>
-
-
-        </div>
 
     </section>
   
