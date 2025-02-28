@@ -168,7 +168,7 @@ const Portfolio = () => {
         <div className= "flex flex-row justify-center items-center">
           <h1 className="text-3xl font-bold mb-4" style={{ color: 'hsl(var(--primary))' }}>Technologies Known</h1>
         </div>
-        <div className="flex flex-row justify-around overflow-hidden px-2 m-20 space-x-4">
+        <div className="flex flex-row justify-around overflow-hidden px-2 space-x-4 mt-20">
           {/* Add your tech stack items here */}
           <div className="flex flex-wrap justify-center items-center">
             <Carousel 
@@ -178,23 +178,25 @@ const Portfolio = () => {
               opts={{
                 loop: true,
               }}
-              className="w-full max-w-sm mx-auto">
-              <CarouselContent className = "-ml-1">
+              className="w-[800px] max-w-sm mx-auto">
+              <CarouselContent className = "-ml-1 ">
                 {technologiesKnown.map((tech,index) => (
-                    <CarouselItem
-                    key={index}
-                    className="flex flex-row lg:basis-3/4 md:basis-2/4 sm:basis-1/5 w-full h-fit pl-10"
+                  <CarouselItem
+                  key={index}
+                  className="flex flex-row h-[400px] w-[350px] sm:w-[20rem] md:w-[40rem] lg:w-[60rem]"
+                >
+                  <Card
+                    className="items-center w-fit h-fit"
+                    style={{
+                      backgroundColor: 'hsl(var(--card))',
+                      color: 'hsl(var(--card-foreground))',
+                    }}
                   >
-                    <Card
-                      className="w-full md:w-[200px] sm:w-[200px] lg:h-[300px] md:h-[300px] sm:h-[300px]"
-                      style={{
-                        backgroundColor: 'hsl(var(--card))',
-                        color: 'hsl(var(--card-foreground))',
-                      }}
-                    >
+                      {/* Tailwind responsive breakpoints sm accomodates for 640px >= screen sizes so unprefixed breakpoints apply to all override by prefixing based on screen sizes */}
+                      {/* w-96 w-80 w-64 w-48 w-40 w-32 w-24 tailwind has only these widths and heights if you want specific widths have to specify in []*/}
                       <CardHeader className="text-center">{tech.title}</CardHeader>
                       <CardContent className="flex aspect-square items-center justify-center p-6">
-                        <img src={tech.image} className="w-25 h-25 object-contain" />
+                        <img src={tech.image} className="w-[150px] h-[150px] object-contain" />
                       </CardContent>
                     </Card>
                   </CarouselItem>
