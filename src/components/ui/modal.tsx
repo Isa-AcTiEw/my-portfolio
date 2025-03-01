@@ -49,11 +49,16 @@ export default function MyModal({ header, body, images,onClose }: ModalContent) 
                             <CarouselNext className="right-2" />
                         </Carousel>
                     ) : (
-                        <div>
-                            <p>No images available</p>
+                        <div className = "mt-5">
+                           <div className="w-full aspect-video">
+                                <img
+                                    src={typeof images === "string" ? images: ""}
+                                    alt={`Single image`}
+                                    className="w-full h-full object-cover rounded-sm"
+                                />
+                            </div>
                         </div>
                     )}
-    
                     <div className="mt-5">
                         <p>{body}</p>
                     </div>

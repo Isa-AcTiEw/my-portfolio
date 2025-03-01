@@ -13,6 +13,7 @@ import BEDpic4 from './assets/BED/BED_Website_EventManagementAdmin.png'
 import FSDPpic1 from './assets/FSDP/homepage.png';
 import FSDPpic2 from './assets/FSDP/management.png';
 import FSDPpic3 from './assets/FSDP/template.png'
+import logo from './assets/logo.jpg'
 import { useState,useRef } from 'react';
 import MyModal  from './components/ui/modal';
 
@@ -40,7 +41,7 @@ const Portfolio = () => {
   const projects : projPhotos[] = [
     {
       title: 'Backend Community Club Website',
-      description: 'A community club website that allow adminstrators divided into roles such as event manage, admin and facilities manager. To organise events and provide frequent updates on current facilities status. Allowing for seameless engagement with residents by allowing the sign up for events ',
+      description: 'A community club website that allow adminstrators divided into roles such as event manager, admin and facilities manager. To organise events and provide frequent updates on current facilities status. Allowing for seamless engagement with residents by allowing the sign up for events ',
       image: [BEDpic1,BEDpic2,BEDpic3,BEDpic4],
       tag: ['Express JS', 'Js', 'Node Js'],
       gitHubUrl:"https://github.com/Isa-AcTiEw/BED2024Apr_P03_T07",
@@ -48,18 +49,18 @@ const Portfolio = () => {
     },
     {
       title: 'Ad distribution system ',
-      description: 'Real-time ad distribution system that utilises a serverless architecture, to enable real-time ad distribution and updates. Responsible for development of Role based authentication system for managing access to functionalities and features within the app',
+      description: 'Real-time ad distribution system that utilises a serverless architecture, to enable real-time ad distribution and updates. Responsible for development of role-based authentication system for managing access to functionalities and features within the app',
       image: [FSDPpic1,FSDPpic2,FSDPpic3],
       tag: ['React', 'Javascript', 'Socket.io', 'DynamoDB'],
-      gitHubUrl:"https://github.com/danielbakrr/fsdp",
+      gitHubUrl:"https://github.com/Isa-AcTiEw/FullStackDev-Y2",
       isMulti: true,
     },
     {
       title: 'MAD Application built with Java in Android Studio',
-      description : 'F&B mobile application for Ngee Ann Polytechnic BYOB (Bring your own buisnesses) buisnesses. Allow users to support and order from entreprenuial F&B buisnesses arround campus ',
-      image: "",
+      description : 'F&B mobile application for Ngee Ann Polytechnic BYOB (Bring your own businesses) businesses. Allow users to support and order from entreprenuial F&B buisnesses arround campus ',
+      image: logo,
       tag: ["Andriod Studio","Java"],
-      gitHubUrl: "",
+      gitHubUrl: "https://github.com/Isa-AcTiEw/P03Team3",
       isMulti: false,
     }
   ];
@@ -247,7 +248,14 @@ const Portfolio = () => {
                           alt="Project image"
                         />
                       </div>
-                  ): null}
+                  ): <div className='mb-5'>
+                        <img
+                          className="aspect-video w-[800px] rounded-sm"
+                          src={typeof project.image === "string" ? project.image : ""}
+                          alt="Project image"
+                        />
+                     </div>
+                }
                   <div className="flex flex-wrap gap-2">
                     {project.tag.map((tags) => (
                       <Badge key={tags} variant="outline" className="text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
