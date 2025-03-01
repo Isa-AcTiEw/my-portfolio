@@ -304,15 +304,15 @@ const Portfolio = () => {
           <CardContent>
           <div className="flex flex-col gap-4 sm:flex-row sm:gap-2">
             <Button variant="outline" className="flex items-center gap-2" style={{ borderColor: 'hsl(var(--border))' }}>
-              <Github className="h-6 w-6" />
+              <Github className="h-6 w-6" onClick = {()=> window.open('https://github.com/Isa-AcTiEw','_blank')}/>
               GitHub
             </Button>
-            <Button variant="outline" className="flex items-center gap-2" style={{ borderColor: 'hsl(var(--border))' }}>
+            <Button variant="outline" className="flex items-center gap-2" onClick={() => window.open('https://www.linkedin.com/in/isaactiew/','_blank')}  style={{ borderColor: 'hsl(var(--border))' }}>
               <Linkedin className="h-6 w-6" />
               LinkedIn
             </Button>
-            <Button variant="outline" className="flex items-center gap-2" style={{ borderColor: 'hsl(var(--border))' }}>
-              <Mail className="h-6 w-6" />
+            <Button variant="outline" className="flex items-center gap-2 "  onClick={()=> window.open('mailto:isaactiew3636@gmail.com','_blank')}  style={{ borderColor: 'hsl(var(--border))' }}>
+              <Mail className="h-6 w-6"/>
               Email
             </Button>
         </div>
