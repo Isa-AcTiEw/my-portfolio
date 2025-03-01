@@ -204,25 +204,29 @@ const Portfolio = () => {
       {/* Tech Stack Section */}
       <section className="mb-12">
           <div className="flex flex-row justify-center items-center">
-              <h1 className="text-3xl font-bold mb-4" style={{ color: 'hsl(var(--primary))' }}>
+              <h1 className="text-3xl font-bold mb-4 mx-auto" style={{ color: 'hsl(var(--primary))' }}>
                   Technologies Known
               </h1>
           </div>
-          {/* Add your tech stack items here */}
-          <div className="flex w-max animate-infinite-scrolling">
-              {/* Duplicate content to create seamless looping */}
-              {[...technologiesKnown, ...technologiesKnown].map((tech, index) => (
-                  <div className="px-10" key={index}>
-                      <Card className="w-[200px] h-[350px]">
-                          <CardHeader className="text-center">{tech.title}</CardHeader>
-                          <CardContent className="flex aspect-square items-center justify-center p-6">
-                              <img src={tech.image} className="w-[150px] h-[150px] object-contain" />
-                          </CardContent>
-                      </Card>
-                  </div>
-              ))}
+
+          <div className="relative w-full overflow-hidden">
+            {/* Scrolling wrapper */}
+            <div className="flex w-max animate-infinite-scrolling">
+                  {/* Duplicate content to create seamless looping */}
+                  {[...technologiesKnown, ...technologiesKnown].map((tech, index) => (
+                      <div className="px-10" key={index}>
+                          <Card className="w-[200px] h-[350px] flex flex-col justify-center text-center">
+                              <CardHeader>{tech.title}</CardHeader>
+                              <CardContent className="flex aspect-square items-center justify-center p-6">
+                                  <img src={tech.image} alt="language-icon" />
+                              </CardContent>
+                          </Card>
+                      </div>
+                  ))}
+            </div>
           </div>
-       </section>
+          
+      </section>
 
 
       {/*Projects section*/}
@@ -276,18 +280,13 @@ const Portfolio = () => {
         </div>
       </section>
 
-              
-
-      
-
-      {/* Resume section */}
-      <section className="mb-12">
+        {/* Resume section */}
+        <section className="mb-12">
         <div className= "flex flex-row justify-center items-center">
           <h2 className="text-2xl font-bold mb-6" style={{ color: 'hsl(var(--primary))' }}>My Resume</h2>
         </div>
         <MyPdf fileUrl={resume}></MyPdf>
       </section>
-  
       {/* Contact Section */}
       <section>
         <Card className = "shadow-lg sm md:flex flex-col w-200px h-fit" style={{ backgroundColor: 'hsl(var(--card))', color: 'hsl(var(--card-foreground))' }}>
