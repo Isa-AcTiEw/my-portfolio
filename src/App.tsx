@@ -2,7 +2,7 @@ import { Badge } from '@/components/ui/badge';
 import portfolioImage from './assets/Isaac Tiew Xun Yong Profile Photo.jpg'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './components/ui/carousel';
+import { Carousel, CarouselContent, CarouselItem} from './components/ui/carousel';
 import { Github, Linkedin, Mail } from 'lucide-react';
 import AutoScroll from 'embla-carousel-auto-scroll';
 import resume from './assets/IsaacTiewXunYong_Resume.pdf';
