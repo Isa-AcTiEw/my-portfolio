@@ -4,7 +4,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './components/ui/carousel';
 import { Github, Linkedin, Mail } from 'lucide-react';
-import Autoplay from 'embla-carousel-autoplay';
 import AutoScroll from 'embla-carousel-auto-scroll';
 import resume from './assets/IsaacTiewXunYong_Resume.pdf';
 import MyPdf from './components/ui/pdf';
@@ -16,6 +15,8 @@ import BEDpic4 from './assets/BED/BED_Website_EventManagementAdmin.png'
 import FSDPpic1 from './assets/FSDP/homepage.png';
 import FSDPpic2 from './assets/FSDP/management.png';
 import FSDPpic3 from './assets/FSDP/template.png'
+import { useState,useRef } from 'react';
+import MyModal  from './components/ui/modal';
 
 
 interface projPhotos{
@@ -29,6 +30,41 @@ interface projPhotos{
 
 
 const Portfolio = () => {
+  const languagesKnown : {langName: string, image: string}[] = [
+    {langName: "C++", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" },
+    {langName: "Python", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"},
+    {langName: "Javascript", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg"},
+    {langName: "Java", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg"},
+    {langName: "Csharp", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg"},
+    
+  ]
+  
+  const projects : projPhotos[] = [
+    {
+      title: 'Backend Community Club Website',
+      description: 'A community club website that allow adminstrators divided into roles such as event manage, admin and facilities manager. To organise events and provide frequent updates on current facilities status. Allowing for seameless engagement with residents by allowing the sign up for events ',
+      image: [BEDpic1,BEDpic2,BEDpic3,BEDpic4],
+      tag: ['Express JS', 'Js', 'Node Js'],
+      gitHubUrl:"https://github.com/Isa-AcTiEw/BED2024Apr_P03_T07",
+      isMulti: true,
+    },
+    {
+      title: 'Ad distribution system ',
+      description: 'Real-time ad distribution system that utilises a serverless architecture, to enable real-time ad distribution and updates. Responsible for development of Role based authentication system for managing access to functionalities and features within the app',
+      image: [FSDPpic1,FSDPpic2,FSDPpic3],
+      tag: ['React', 'Javascript', 'Socket.io', 'DynamoDB'],
+      gitHubUrl:"https://github.com/danielbakrr/fsdp",
+      isMulti: true,
+    },
+    {
+      title: 'MAD Application built with Java in Android Studio',
+      description : 'F&B mobile application for Ngee Ann Polytechnic BYOB (Bring your own buisnesses) buisnesses. Allow users to support and order from entreprenuial F&B buisnesses arround campus ',
+      image: "",
+      tag: ["Andriod Studio","Java"],
+      gitHubUrl: "",
+      isMulti: false,
+    }
+  ];
   const technologiesKnown = [
     {
       title: "React",
@@ -75,45 +111,52 @@ const Portfolio = () => {
       image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original-wordmark.svg"
     }
   ];
-
-  const languagesKnown : {langName: string, image: string}[] = [
-    {langName: "C++", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" },
-    {langName: "Python", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"},
-    {langName: "Javascript", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg"},
-    {langName: "Java", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg"},
-    {langName: "Csharp", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg"},
-    
-  ]
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isClicked, setIsClicked] = useState<boolean[]>(new Array(projects.length).fill(false));
+  const buttonRef = useRef<HTMLButtonElement | null>(null); // Create a ref for the button
+  const [selectedProj,setSelectedProj] = useState<projPhotos | null>(null);
   
-  const projects : projPhotos[] = [
-    {
-      title: 'Backend Community Club Website',
-      description: 'A community club website that allow adminstrators divided into roles such as event manage, admin and facilities manager. To organise events and provide frequent updates on current facilities status. Allowing for seameless engagement with residents by allowing the sign up for events ',
-      image: [BEDpic1,BEDpic2,BEDpic3,BEDpic4],
-      tag: ['Express JS', 'Js', 'Node Js'],
-      gitHubUrl:"https://github.com/Isa-AcTiEw/BED2024Apr_P03_T07",
-      isMulti: true,
-    },
-    {
-      title: 'Ad distribution system ',
-      description: 'Developed a real-time ad distribution system that utilises a serverless architecture, to enable real-time ad distribution and updates. Responsible for development of Role based authentication system for managing access to functionalities and features within the app',
-      image: [FSDPpic1,FSDPpic2,FSDPpic3],
-      tag: ['React', 'Javascript', 'Socket.io', 'DynamoDB'],
-      gitHubUrl:"https://github.com/danielbakrr/fsdp",
-      isMulti: true,
-    },
-    {
-      title: 'MAD Application built with Java in Android Studio',
-      description : 'F&B mobile application for Ngee Ann Polytechnic BYOB (Bring your own buisnesses) buisnesses. Allow users to support and order from entreprenuial F&B buisnesses arround campus ',
-      image: "",
-      tag: ["Andriod Studio","Java"],
-      gitHubUrl: "",
-      isMulti: false,
+
+  const handleClick = (index: number) => {
+    setIsClicked(prevState => {
+        const newState = [...prevState];
+        // Ensure the array is long enough to accommodate the focused element
+        while (newState.length <= index) {
+            newState.push(false); // Add false values to the array until it reaches the required index
+        }
+        newState[index] = true; // Mark the element at `index` as focused
+        return newState;
+    });
+  };
+
+  const openModal =(project: projPhotos ) =>{
+    setIsModalOpen(true);
+    // destructure and pass to modal
+    setSelectedProj(project)
+  }
+
+  const handleBlur = (index: number, e:React.FocusEvent<HTMLDivElement | Element>) => {
+    if (buttonRef.current && !buttonRef.current.contains(e.relatedTarget)) {
+      const newClickedState = [...isClicked];
+      newClickedState[index] = false; // Reset clicked state when focus is lost
+      setIsClicked(newClickedState);
     }
-  ];
+  };
+
+
+  
 
   return (
     <div className="min-h-screen p-8" style={{ backgroundColor: 'hsl(var(--background))' }}>
+       {/* Call the modal directly based on isClicked state */}
+       {selectedProj && isModalOpen && (
+                    <MyModal
+                      header={selectedProj.title}
+                      images={selectedProj.image}
+                      body={selectedProj.description}
+                      onClose={() => setIsModalOpen(false)} // Close modal
+                    />
+                  )}
       {/* About Section */}
       <div className = " flex flex-row justify-center items-center p-2 m-20">
         <h1>Aspiring Software Engineer Isaac Tiew</h1>
@@ -217,53 +260,22 @@ const Portfolio = () => {
         <h2 className="text-2xl font-bold mb-6" style={{ color: 'hsl(var(--primary))' }}>Featured Projects</h2>
       </div>
       <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-2 w-full">
-          {projects.map((project) => (
-            <Card className = "drop-shadow-lg px-1 justify-center sm: w-200px h-200px" key={project.title} style={{ backgroundColor: 'hsl(var(--card))', color: 'hsl(var(--card-foreground))' }}>
+          {projects.map((project,index) => (
+            <Card className = "drop-shadow-lg px-1 justify-center sm: w-200px h-200px relative" key={project.title} style={{ backgroundColor: 'hsl(var(--card))', color: 'hsl(var(--card-foreground))' }} tabIndex={0} onClick={()=> handleClick(index)}
+            onBlur={(e) => handleBlur(index, e)}>
               <CardHeader>
                 <CardTitle>{project.title}</CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="mb-4">{project.description}</p>
-                {project.isMulti ? (
-                  <Carousel
-                    plugins = {[
-                      Autoplay({
-                        delay: 3000
-                      })
-                    ]}
-                    className="relative w-full">
-                    <CarouselContent>
-                        {Array.isArray(project.image) && project.image.length > 0 ? (
-                          project.image.map((imgSrc, index) => {
-                            console.log('Rendering image:', imgSrc);  // Logs the current image source
-                            return (
-                              <CarouselItem key={index}>
-                                <div className="p-1">
-                                  <Card>
-                                  <CardContent className="flex items-center justify-center p-0">
-                                    <div className="w-full aspect-[16/9]">
-                                      <img
-                                        src={imgSrc}
-                                        alt={`Image ${index}`}
-                                        className="w-full h-full object-cover rounded-sm"
-                                      />
-                                    </div>
-                                  </CardContent>
-
-                                  </Card>
-                                </div>
-                              </CarouselItem>
-                            );
-                          })
-                        ) : (
-                        <p>No images available</p>
-                      )}
-                    </CarouselContent>
-                    <CarouselPrevious className = "left-2"/>
-                    <CarouselNext className = "right-2"/>
-
-                </Carousel>
-                ) : null}
+              <CardContent className = "flex flex-col justify-center">
+                {project.isMulti && project.image ? (
+                    <div className='mb-5'>
+                      <img
+                        className="aspect-video rounded-sm"
+                        src={project.image[0]}
+                        alt="Project image"
+                      />
+                    </div>
+                ): null}
                 <div className="flex flex-wrap gap-2">
                   {project.tag.map((tags) => (
                     <Badge key={tags} variant="outline" className="text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
@@ -281,7 +293,14 @@ const Portfolio = () => {
 
                 </div>
               </CardContent>
+              {isClicked[index] ? (
+                  <div className = 'absolute inset-0 z-50 flex justify-center items-center bg-slate-950 bg-opacity-70 rounded-lg'>
+                    <Button ref = {buttonRef} className='rounded-sm bg-white w-fit h-fit' onClick ={()=> openModal(projects[index])}>More details</Button>
+                  </div>
+
+                ): null}
             </Card>
+            
           ))}
         </div>
       </section>
@@ -321,6 +340,8 @@ const Portfolio = () => {
         </Card>
       </section>
     </div>
+
+    
   );
   
 };
