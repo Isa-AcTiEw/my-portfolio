@@ -2,7 +2,7 @@ import { Badge } from '@/components/ui/badge';
 import portfolioImage from './assets/Isaac Tiew Xun Yong Profile Photo.jpg'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Carousel, CarouselContent, CarouselItem} from './components/ui/carousel';
+import { Carousel, CarouselContent, CarouselItem,type CarouselApi} from './components/ui/carousel';
 import { Github, Linkedin, Mail } from 'lucide-react';
 import AutoScroll from 'embla-carousel-auto-scroll';
 import resume from './assets/IsaacTiewXunYong_Resume.pdf';
@@ -15,7 +15,7 @@ import BEDpic4 from './assets/BED/BED_Website_EventManagementAdmin.png'
 import FSDPpic1 from './assets/FSDP/homepage.png';
 import FSDPpic2 from './assets/FSDP/management.png';
 import FSDPpic3 from './assets/FSDP/template.png'
-import { useState,useRef } from 'react';
+import { useState,useRef,useEffect } from 'react';
 import MyModal  from './components/ui/modal';
 
 
@@ -115,8 +115,9 @@ const Portfolio = () => {
   const [isClicked, setIsClicked] = useState<boolean[]>(new Array(projects.length).fill(false));
   const buttonRef = useRef<HTMLButtonElement | null>(null); // Create a ref for the button
   const [selectedProj,setSelectedProj] = useState<projPhotos | null>(null);
-  
 
+  const [api, setApi] = useState<CarouselApi>()
+  
   const handleClick = (index: number) => {
     setIsClicked(prevState => {
         const newState = [...prevState];
@@ -183,20 +184,22 @@ const Portfolio = () => {
         <div className = "flex flex-row justify-content items-center">
           <h1 className="text-3xl font-bold mb-4 mx-auto" style={{ color: 'hsl(var(--primary))' }}>Programming languages known</h1>
         </div>
-        <Carousel 
+        <Carousel
+            setApi={setApi}
             plugins = {[
-              AutoScroll({ playOnInit: true })
+              AutoScroll({ playOnInit: true, speed:6})
             ]}
             opts={{
               loop: true,
+              dragFree: true
             }}
-            className="w-full max-w-sm mx-auto">
-            <CarouselContent className="-ml-1">
+            className="w-full mx-auto">
+            <CarouselContent className="w-[350px]">
               {languagesKnown.map((lang,index)=> {
                 return(
-                  <CarouselItem key = {index} className = " w-full sm:w-200px h-200px lg:basis-2/4 md:basis-1/3">
+                  <CarouselItem key = {index}>
                     <div className="p-1">
-                      <Card>
+                      <Card className='w-[200px] h-[200px]'>
                         <CardContent className="flex aspect-square items-center justify-center p-6">
                           <img src = {lang.image}></img>
                         </CardContent>
