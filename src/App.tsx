@@ -114,7 +114,6 @@ const Portfolio = () => {
   const buttonRef = useRef<HTMLButtonElement | null>(null); // Create a ref for the button
   const [selectedProj,setSelectedProj] = useState<projPhotos | null>(null);
 
-  const [api, setApi] = useState<CarouselApi>()
   
   const handleClick = (index: number) => {
     setIsClicked(prevState => {
