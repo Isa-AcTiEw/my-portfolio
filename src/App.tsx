@@ -2,9 +2,7 @@ import { Badge } from '@/components/ui/badge';
 import portfolioImage from './assets/Isaac Tiew Xun Yong Profile Photo.jpg'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Carousel, CarouselContent, CarouselItem,type CarouselApi} from './components/ui/carousel';
 import { Github, Linkedin, Mail } from 'lucide-react';
-import AutoScroll from 'embla-carousel-auto-scroll';
 import resume from './assets/IsaacTiewXunYong_Resume.pdf';
 import MyPdf from './components/ui/pdf';
 import BEDpic1 from './assets/BED/BED_Website_Home.png';
@@ -15,7 +13,7 @@ import BEDpic4 from './assets/BED/BED_Website_EventManagementAdmin.png'
 import FSDPpic1 from './assets/FSDP/homepage.png';
 import FSDPpic2 from './assets/FSDP/management.png';
 import FSDPpic3 from './assets/FSDP/template.png'
-import { useState,useRef,useEffect } from 'react';
+import { useState,useRef } from 'react';
 import MyModal  from './components/ui/modal';
 
 
