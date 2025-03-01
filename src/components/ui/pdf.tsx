@@ -39,6 +39,7 @@ export default function MyPdf({fileUrl} : {fileUrl:string}){
     }
 
     useEffect(() => {
+        // updates the window width 
         const handleResize = () => {
           setWindowWidth(window.innerWidth); // Update width on resize
         };
@@ -51,7 +52,7 @@ export default function MyPdf({fileUrl} : {fileUrl:string}){
         };
       }, []);
     
-      // Set page width based on screen size
+      // UseEffect block that sets the new page width on the dependency windowWidth, whenever the window is resize the new page width set
       useEffect(() => {
         if (windowWidth >= 1024) {
           setPageWidth(800); // Large screens (lg)

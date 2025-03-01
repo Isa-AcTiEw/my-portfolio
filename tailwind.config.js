@@ -1,3 +1,5 @@
+const { transform } = require('typescript');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     darkMode: ["class"],
@@ -57,7 +59,16 @@ module.exports = {
               fontWeight: {
                 'custom-light': 300,  // Example weight for Fira Code
                 'custom-bold': 700,   // Example weight for Fira Code
-              },
+            },
+			keyframes: {
+				"infinite-scrolling": {
+				  "0%": { transform: "translateX(0)" },
+				  "100%": { transform: "translateX(-50%)" }, // Scrolls half of the content not all the way to the end
+				},
+			  },
+			  animation: {
+				"infinite-scrolling": "infinite-scrolling 20s linear infinite",
+			  },
     	}
     },
     plugins: [require("tailwindcss-animate")],

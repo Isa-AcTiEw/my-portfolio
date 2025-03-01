@@ -181,132 +181,104 @@ const Portfolio = () => {
       
       {/* Programming languages known section */}
       <section className = "mb-12">
-        <div className = "flex flex-row justify-content items-center">
-          <h1 className="text-3xl font-bold mb-4 mx-auto" style={{ color: 'hsl(var(--primary))' }}>Programming languages known</h1>
-        </div>
-        <Carousel
-            setApi={setApi}
-            plugins = {[
-              AutoScroll({ playOnInit: true, speed:6})
-            ]}
-            opts={{
-              loop: true,
-              dragFree: true
-            }}
-            className="w-full mx-auto">
-            <CarouselContent className="w-[350px]">
-              {languagesKnown.map((lang,index)=> {
-                return(
-                  <CarouselItem key = {index}>
-                    <div className="p-1">
-                      <Card className='w-[200px] h-[200px]'>
-                        <CardContent className="flex aspect-square items-center justify-center p-6">
-                          <img src = {lang.image}></img>
-                        </CardContent>
-                      </Card>
-                    </div>
-                  </CarouselItem>
-                )
-              })}
-            </CarouselContent>
-        </Carousel>
-
+          <div className = "flex flex-row justify-content items-center">
+            <h1 className="text-3xl font-bold mb-4 mx-auto" style={{ color: 'hsl(var(--primary))' }}>Programming languages known</h1>
+          </div>
+          <div className="relative w-full overflow-hidden">
+            {/* Scrolling wrapper */}
+            <div className="flex w-max animate-infinite-scrolling">
+                  {/* Duplicate content to create seamless looping */}
+                  {[...languagesKnown, ...languagesKnown].map((lang, index) => (
+                      <div className="px-10" key={index}>
+                          <Card className="w-[200px] h-[200px]">
+                              <CardContent className="flex aspect-square items-center justify-center p-6">
+                                  <img src={lang.image} alt="language-icon" />
+                              </CardContent>
+                          </Card>
+                      </div>
+                  ))}
+            </div>
+          </div>
       </section>
 
       {/* Tech Stack Section */}
       <section className="mb-12">
-        <div className= "flex flex-row justify-center items-center">
-          <h1 className="text-3xl font-bold mb-4" style={{ color: 'hsl(var(--primary))' }}>Technologies Known</h1>
-        </div>
-         {/* Add your tech stack items here */}
-         <div className="flex flex-row justify-center mt-20 mx-auto">
-            <Carousel 
-              plugins = {[
-                AutoScroll({ playOnInit: true })
-              ]}
-              opts={{
-                loop: true,
-              }}
-              className="w-[800px] max-w-sm mx-auto">
-              <CarouselContent className = "-ml-1 ">
-                {technologiesKnown.map((tech,index) => (
-                  <CarouselItem
-                  key={index}
-                  className="flex flex-row justify-center h-[400px] w-[350px] sm:w-[20rem] md:w-[40rem] lg:w-[60rem]"
-                >
-                  <Card
-                    className="items-center w-fit h-fit"
-                    style={{
-                      backgroundColor: 'hsl(var(--card))',
-                      color: 'hsl(var(--card-foreground))',
-                    }}
-                  >
-                      {/* Tailwind responsive breakpoints sm accomodates for 640px >= screen sizes so unprefixed breakpoints apply to all override by prefixing based on screen sizes */}
-                      {/* w-96 w-80 w-64 w-48 w-40 w-32 w-24 tailwind has only these widths and heights if you want specific widths have to specify in []*/}
-                      <CardHeader className="text-center">{tech.title}</CardHeader>
-                      <CardContent className="flex aspect-square items-center justify-center p-6">
-                        <img src={tech.image} className="w-[150px] h-[150px] object-contain" />
-                      </CardContent>
-                    </Card>
-                  </CarouselItem>
-                
-                ))}
-              </CarouselContent>
-            </Carousel>
+          <div className="flex flex-row justify-center items-center">
+              <h1 className="text-3xl font-bold mb-4" style={{ color: 'hsl(var(--primary))' }}>
+                  Technologies Known
+              </h1>
           </div>
-
-    </section>
-  
-      {/* Projects Section */}
-      <section className="mb-12">
-      <div className= "flex flex-row justify-center items-center">
-        <h2 className="text-2xl font-bold mb-6" style={{ color: 'hsl(var(--primary))' }}>Featured Projects</h2>
-      </div>
-      <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-2 w-full">
-          {projects.map((project,index) => (
-            <Card className = "drop-shadow-lg px-1 justify-center sm: w-200px h-200px relative" key={project.title} style={{ backgroundColor: 'hsl(var(--card))', color: 'hsl(var(--card-foreground))' }} tabIndex={0} onClick={()=> handleClick(index)}
-            onBlur={(e) => handleBlur(index, e)}>
-              <CardHeader>
-                <CardTitle>{project.title}</CardTitle>
-              </CardHeader>
-              <CardContent className = "flex flex-col justify-center">
-                {project.isMulti && project.image ? (
-                    <div className='mb-5'>
-                      <img
-                        className="aspect-video rounded-sm"
-                        src={project.image[0]}
-                        alt="Project image"
-                      />
-                    </div>
-                ): null}
-                <div className="flex flex-wrap gap-2">
-                  {project.tag.map((tags) => (
-                    <Badge key={tags} variant="outline" className="text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-                      {tags}
-                    </Badge>
-                  ))}
-                </div>
-                <div className = "flex flex-col justify-center rounded-lg bg-primary mt-5 w-full">
-                  <button 
-                      className="flex items-center justify-center gap-2 px-4 py-2 text-white" 
-                      onClick={() => window.open(project.gitHubUrl, '_blank')}>
-                      <Github className="h-6 w-6" /> {/* Icon */}
-                      <span>Github Repo</span> {/* Text */}
-                  </button>
-
-                </div>
-              </CardContent>
-              {isClicked[index] ? (
-                  <div className = 'absolute inset-0 z-50 flex justify-center items-center bg-slate-950 bg-opacity-70 rounded-lg'>
-                    <Button ref = {buttonRef} className='rounded-sm bg-white w-fit h-fit' onClick ={()=> openModal(projects[index])}>More details</Button>
+          {/* Add your tech stack items here */}
+          <div className="flex w-max animate-infinite-scrolling">
+              {/* Duplicate content to create seamless looping */}
+              {[...technologiesKnown, ...technologiesKnown].map((tech, index) => (
+                  <div className="px-10" key={index}>
+                      <Card className="w-[200px] h-[350px]">
+                          <CardHeader className="text-center">{tech.title}</CardHeader>
+                          <CardContent className="flex aspect-square items-center justify-center p-6">
+                              <img src={tech.image} className="w-[150px] h-[150px] object-contain" />
+                          </CardContent>
+                      </Card>
                   </div>
+              ))}
+          </div>
+       </section>
 
-                ): null}
-            </Card>
-            
-          ))}
+
+      {/*Projects section*/}
+      <section className="mb-12">
+        <div className= "flex flex-row justify-center items-center">
+          <h2 className="text-2xl font-bold mb-6" style={{ color: 'hsl(var(--primary))' }}>Featured Projects</h2>
+        </div>
+        <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-2 w-full">
+            {projects.map((project,index) => (
+              <Card className = "drop-shadow-lg px-1 justify-center sm: w-200px h-200px relative" key={project.title} style={{ backgroundColor: 'hsl(var(--card))', color: 'hsl(var(--card-foreground))' }} tabIndex={0} onClick={()=> handleClick(index)}
+              onBlur={(e) => handleBlur(index, e)}>
+                <CardHeader>
+                  <CardTitle>{project.title}</CardTitle>
+                </CardHeader>
+                <CardContent className = "flex flex-col justify-center">
+                  {project.isMulti && project.image ? (
+                      <div className='mb-5'>
+                        <img
+                          className="aspect-video rounded-sm"
+                          src={project.image[0]}
+                          alt="Project image"
+                        />
+                      </div>
+                  ): null}
+                  <div className="flex flex-wrap gap-2">
+                    {project.tag.map((tags) => (
+                      <Badge key={tags} variant="outline" className="text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
+                        {tags}
+                      </Badge>
+                    ))}
+                  </div>
+                  <div className = "flex flex-col justify-center rounded-lg bg-primary mt-5 w-full">
+                    <button 
+                        className="flex items-center justify-center gap-2 px-4 py-2 text-white" 
+                        onClick={() => window.open(project.gitHubUrl, '_blank')}>
+                        <Github className="h-6 w-6" /> {/* Icon */}
+                        <span>Github Repo</span> {/* Text */}
+                    </button>
+
+                  </div>
+                </CardContent>
+                {isClicked[index] ? (
+                    <div className = 'absolute inset-0 z-50 flex justify-center items-center bg-slate-950 bg-opacity-70 rounded-lg'>
+                      <Button ref = {buttonRef} className='rounded-sm bg-white w-fit h-fit' onClick ={()=> openModal(projects[index])}>More details</Button>
+                    </div>
+
+                  ): null}
+              </Card>
+              
+            ))}
         </div>
       </section>
+
+              
+
+      
 
       {/* Resume section */}
       <section className="mb-12">
@@ -343,8 +315,6 @@ const Portfolio = () => {
         </Card>
       </section>
     </div>
-
-    
   );
   
 };
