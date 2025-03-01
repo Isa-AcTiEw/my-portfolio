@@ -303,8 +303,8 @@ const Portfolio = () => {
           </CardHeader>
           <CardContent>
           <div className="flex flex-col gap-4 sm:flex-row sm:gap-2">
-            <Button variant="outline" className="flex items-center gap-2" style={{ borderColor: 'hsl(var(--border))' }}>
-              <Github className="h-6 w-6" onClick = {()=> window.open('https://github.com/Isa-AcTiEw','_blank')}/>
+            <Button variant="outline" className="flex items-center gap-2" style={{ borderColor: 'hsl(var(--border))' }} onClick = {()=> window.open('https://github.com/Isa-AcTiEw','_blank')}>
+              <Github className="h-6 w-6"/>
               GitHub
             </Button>
             <Button variant="outline" className="flex items-center gap-2" onClick={() => window.open('https://www.linkedin.com/in/isaactiew/','_blank')}  style={{ borderColor: 'hsl(var(--border))' }}>
