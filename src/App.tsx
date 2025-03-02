@@ -53,7 +53,7 @@ const Portfolio = () => {
       title: 'Ad distribution system ',
       description: 'Real-time ad distribution system that utilises a serverless architecture, to enable real-time ad distribution and updates. Responsible for development of role-based authentication system for managing access to functionalities and features within the app',
       image: [FSDPpic1,FSDPpic2,FSDPpic3],
-      tag: ['React', 'Javascript', 'Socket.io', 'DynamoDB', 'Express Js'],
+      tag: ['React', 'Javascript', 'Socket.io', 'DynamoDB', 'Express Js', 'Jest'],
       gitHubUrl:"https://github.com/Isa-AcTiEw/FullStackDev-Y2",
       isMulti: true,
     },
