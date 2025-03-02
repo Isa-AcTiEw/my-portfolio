@@ -85,7 +85,7 @@ const Portfolio = () => {
       title: 'Ngee Ann City',
       description: "Ngee Ann City is a minature city tycoon inspired game, users are able to accumulate points through the construction of different building types and constructing adjacent buildings",
       image: NgeeAnnCity,
-      tag: ["python"],
+      tag: ["python","Jira"],
       gitHubUrl:"https://github.com/Isa-AcTiEw/SPM-console-game",
       isMulti:false
     },
@@ -136,12 +136,16 @@ const Portfolio = () => {
       image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/androidstudio/androidstudio-original.svg"
     },
     {
+      title: "Express Js",
+      image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original-wordmark.svg"
+    },
+    {
       title: "Figma",
       image:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
     },
     {
-      title: "Express Js",
-      image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original-wordmark.svg"
+      title: "Jira",
+      image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jira/jira-original.svg"
     }
   ];
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
