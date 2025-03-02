@@ -14,6 +14,16 @@ import FSDPpic1 from './assets/FSDP/homepage.png';
 import FSDPpic2 from './assets/FSDP/management.png';
 import FSDPpic3 from './assets/FSDP/template.png'
 import logo from './assets/logo.jpg'
+
+import vehicleSGHomepage from './assets/vehicleSG/vehicleSGHomepage.png'
+import carparkAvail from './assets/vehicleSG/carparkAvailability.png'
+import trafficCam from './assets/vehicleSG/trafficCameras.png'
+import streetConditions from './assets/vehicleSG/trafficMap.png'
+
+import NgeeAnnCity from './assets/NgeeAnnCity.png'
+
+import movieDB from './assets/MovieDB.png'
+
 import { useState,useRef } from 'react';
 import MyModal  from './components/ui/modal';
 
@@ -43,7 +53,7 @@ const Portfolio = () => {
       title: 'Backend Community Club Website',
       description: 'A community club website that allow adminstrators divided into roles such as event manager, admin and facilities manager. To organise events and provide frequent updates on current facilities status. Allowing for seamless engagement with residents by allowing the sign up for events ',
       image: [BEDpic1,BEDpic2,BEDpic3,BEDpic4],
-      tag: ['Express JS', 'Js', 'Node Js'],
+      tag: ['Express JS', 'Js', 'Node Js', 'Bootstrap'],
       gitHubUrl:"https://github.com/Isa-AcTiEw/BED2024Apr_P03_T07",
       isMulti: true,
     },
@@ -51,7 +61,7 @@ const Portfolio = () => {
       title: 'Ad distribution system ',
       description: 'Real-time ad distribution system that utilises a serverless architecture, to enable real-time ad distribution and updates. Responsible for development of role-based authentication system for managing access to functionalities and features within the app',
       image: [FSDPpic1,FSDPpic2,FSDPpic3],
-      tag: ['React', 'Javascript', 'Socket.io', 'DynamoDB'],
+      tag: ['React', 'Javascript', 'Socket.io', 'DynamoDB', 'Express Js'],
       gitHubUrl:"https://github.com/Isa-AcTiEw/FullStackDev-Y2",
       isMulti: true,
     },
@@ -62,6 +72,30 @@ const Portfolio = () => {
       tag: ["Andriod Studio","Java"],
       gitHubUrl: "https://github.com/Isa-AcTiEw/P03Team3",
       isMulti: false,
+    },
+    {
+      title: "VehicleSG",
+      description: "Vehicle SG is an all in one platform for Singaporean motorists to be informed on traffic conditions, avalilable HDB Carpark lots and checkpoint conditions through the leveraging of LTA's Datamall APIs",
+      image: [vehicleSGHomepage,carparkAvail,trafficCam,streetConditions],
+      tag: ["Javascript", "Bootstrap"],
+      gitHubUrl:"https://github.com/Isa-AcTiEw/VehicleSg_Website_S10257760_S10257808",
+      isMulti: true    
+    },
+    {
+      title: 'Ngee Ann City',
+      description: "Ngee Ann City is a minature city tycoon inspired game, users are able to accumulate points through the construction of different building types and constructing adjacent buildings",
+      image: NgeeAnnCity,
+      tag: ["python"],
+      gitHubUrl:"https://github.com/Isa-AcTiEw/SPM-console-game",
+      isMulti:false
+    },
+    {
+      title: 'Movie Database Management System',
+      description: 'A community-based movie database management system that utilises Data Structures and Algorithms and fast queries for actor or movie related details by movie enthusiast.',
+      image:movieDB,
+      tag: ["C++"],
+      gitHubUrl: "https://github.com/Isa-AcTiEw/DSA-Assignment-JoeyAndIsaac",
+      isMulti: false
     }
   ];
   const technologiesKnown = [
