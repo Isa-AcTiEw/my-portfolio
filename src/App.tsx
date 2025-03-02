@@ -50,19 +50,19 @@ const Portfolio = () => {
   
   const projects : projPhotos[] = [
     {
-      title: 'Backend Community Club Website',
-      description: 'A community club website that allow adminstrators divided into roles such as event manager, admin and facilities manager. To organise events and provide frequent updates on current facilities status. Allowing for seamless engagement with residents by allowing the sign up for events ',
-      image: [BEDpic1,BEDpic2,BEDpic3,BEDpic4],
-      tag: ['Express JS', 'Js', 'Node Js', 'Bootstrap'],
-      gitHubUrl:"https://github.com/Isa-AcTiEw/BED2024Apr_P03_T07",
-      isMulti: true,
-    },
-    {
       title: 'Ad distribution system ',
       description: 'Real-time ad distribution system that utilises a serverless architecture, to enable real-time ad distribution and updates. Responsible for development of role-based authentication system for managing access to functionalities and features within the app',
       image: [FSDPpic1,FSDPpic2,FSDPpic3],
       tag: ['React', 'Javascript', 'Socket.io', 'DynamoDB', 'Express Js'],
       gitHubUrl:"https://github.com/Isa-AcTiEw/FullStackDev-Y2",
+      isMulti: true,
+    },
+    {
+      title: 'Backend Community Club Website',
+      description: 'A community club website that allow adminstrators divided into roles such as event manager, admin and facilities manager. To organise events and provide frequent updates on current facilities status. Allowing for seamless engagement with residents by allowing the sign up for events ',
+      image: [BEDpic1,BEDpic2,BEDpic3,BEDpic4],
+      tag: ['Express JS', 'Js', 'Node Js', 'Bootstrap'],
+      gitHubUrl:"https://github.com/Isa-AcTiEw/BED2024Apr_P03_T07",
       isMulti: true,
     },
     {
@@ -91,7 +91,7 @@ const Portfolio = () => {
     },
     {
       title: 'Movie Database Management System',
-      description: 'A community-based movie database management system that utilises Data Structures and Algorithms and fast queries for actor or movie related details by movie enthusiast.',
+      description: 'A community-based movie database management system that utilises Data Structures and Algorithms for fast and efficient queries for actor or movie related details by movie enthusiast.',
       image:movieDB,
       tag: ["C++"],
       gitHubUrl: "https://github.com/Isa-AcTiEw/DSA-Assignment-JoeyAndIsaac",
