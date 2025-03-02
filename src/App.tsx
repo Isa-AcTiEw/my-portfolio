@@ -85,7 +85,7 @@ const Portfolio = () => {
       title: 'Ngee Ann City',
       description: "Ngee Ann City is a minature city tycoon inspired game, users are able to accumulate points through the construction of different building types and constructing adjacent buildings",
       image: NgeeAnnCity,
-      tag: ["python","Jira"],
+      tag: ["Python","Jira"],
       gitHubUrl:"https://github.com/Isa-AcTiEw/SPM-console-game",
       isMulti:false
     },
